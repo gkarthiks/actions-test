@@ -16,5 +16,5 @@ jobs:
       run: |
         docker version
         docker login --username ${{ secrets.DOKCKER_USER_NAME }} --password ${{ secrets.DOCKER_PASSWORD }}
-        docker build --build-arg BUILD_VERSION=$GITHUB_SHA -t gkarthics/gh-actions-test:$GITHUB_SHA
+        docker build --build-arg BUILD_VERSION=$GITHUB_SHA -t gkarthics/gh-actions-test:$GITHUB_SHA .
         docker push gkarthics/gh-actions-test
