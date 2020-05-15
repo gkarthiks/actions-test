@@ -1,10 +1,6 @@
 name: docker-build-push
 on:
   release:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
 
 jobs:
   build:
@@ -17,5 +13,5 @@ jobs:
       run: |
         docker version
         docker login --username ${{ secrets.DOKCKER_USER_NAME }} --password ${{ secrets.DOCKER_PASSWORD }}
-        docker build --build-arg BUILD_VERSION=$GITHUB_SHA -t gkarthics/gh-actions-test:$GITHUB_SHA .
+        docker build --build-arg BUILD_VERSION=$GITHUB_REF -t gkarthics/gh-actions-test:$GITHUB_REF .
         docker push gkarthics/gh-actions-test
