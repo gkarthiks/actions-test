@@ -1,5 +1,6 @@
 name: docker-build-push
 on:
+  release:
   push:
     branches: [ master ]
   pull_request:
