@@ -16,3 +16,4 @@ jobs:
         name: gkarthics/gh-actions-test
         username: ${{ secrets.DOKCKER_USER_NAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+        build_args: BUILD_VERSION=$GITHUB_SHA
