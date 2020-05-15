@@ -1,6 +1,9 @@
 name: docker-build-push
 on:
-  release:
+  push:
+    branches: [master]
+    tags: 
+      - "v*
 
 jobs:
   build:
@@ -11,6 +14,7 @@ jobs:
       run: |
         echo $GITHUB_REF
         echo $PUSH_TAG_VERSION
+        echo $GITHUB_REF | grep -o "[a-z][0-9][\.][0-9]$"
     - name: docker build and publish
       run: |
         docker version
