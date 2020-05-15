@@ -14,5 +14,5 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: gkarthics/gh-actions-test
-        username: ${{ secrets.DOCKER_USER_NAME }}
+        username: ${{ secrets.DOKCKER_USER_NAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
