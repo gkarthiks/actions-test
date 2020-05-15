@@ -9,11 +9,10 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v2
+    - name: Prints the version of the commit
+      run: echo $GITHUB_SHA
     - name: docker build and publish
-      uses: elgohr/Publish-Docker-Github-Action@master
-      with:
-        name: gkarthics/gh-actions-test
-        username: ${{ secrets.DOKCKER_USER_NAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        build_args: BUILD_VERSION=$GITHUB_SHA
+      run: |
+        docker version
+        docker login --username ${{ secrets.DOKCKER_USER_NAME }} --password ${{ secrets.DOCKER_PASSWORD }}
