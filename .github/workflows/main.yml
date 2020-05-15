@@ -1,9 +1,8 @@
 name: docker-build-push
 on:
+  release:
   push:
     branches: [master]
-    tags: 
-      - "v*
 
 jobs:
   build:
