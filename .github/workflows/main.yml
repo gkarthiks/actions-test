@@ -1,17 +1,13 @@
 name: docker-build-push
 on:
-  release:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: docker build and publish
-      run: |
-        TAG=$(echo $GITHUB_REF | grep -o "[0-9][\.].*$")
-        echo tag is : $TAG
-        docker version
-        docker login --username ${{ secrets.DOKCKER_USER_NAME }} --password ${{ secrets.DOCKER_PASSWORD }}
-        docker build --build-arg BUILD_VERSION=$TAG -t gkarthics/gh-actions-test:$TAG .
-        docker push gkarthics/gh-actions-test
+    - uses: gkarthics/swagger-validate:0.0.1 
+    - name: validate
+      run: validate .
